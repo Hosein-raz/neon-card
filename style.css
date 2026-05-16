@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #1d061a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+section .neonbox {
+    width: 320px;
+    height: 400px;
+    position: relative;
+    margin: 40px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section .neonbox::before {
+    content: '';
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    transform: skewX(15deg);
+    transition: 0.5s;
+    right: 50px;
+}
+
+section .neonbox::after {
+    content: '';
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    transform: skewX(15deg);
+    filter: blur(30px);
+    transition: 0.5s;
+    right: 50px;
+}
+
+section .neonbox:nth-child(1)::before, section .neonbox:nth-child(1)::after {
+    background: linear-gradient(#ffbc00, #ff0058);
+}
+
+section .neonbox:nth-child(2)::before, section .neonbox:nth-child(2)::after {
+    background: linear-gradient(#03a9f4, #ff0058);
+}
+
+section .neonbox:nth-child(3)::before, section .neonbox:nth-child(3)::after {
+    background: linear-gradient(#4dff03, #00d0ff);
+}
+
+section .neonbox .content {
+    width: 100%;
+    background-color: rgba(255,255,255,0.05);
+    padding: 20px 40px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    z-index: 5;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: #FFF;
+    transition: 0.5s;
+    position: relative;
+    right: 0;
+}
+
+section .neonbox .content h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+section .neonbox .content p {
+    font-size: 15px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+section .neonbox .content a {
+    color: #262626;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #FFF;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: block;
+    float: left;
+}
+
+section .neonbox:hover::before, section .neonbox:hover::after {
+    width: calc(100% - 90px);
+    transform: skewX(0deg);
+    right: 20px;
+}
+
+section .neonbox:hover .content {
+    padding: 60px 40px;
+    right: -25px;
+}
+
+section .neonbox span::before, section .neonbox span::after {
+    content: '';
+    background-color: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 6;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    transition: 0.5s;
+    opacity: 0;
+    animation: animate 3s linear infinite;
+}
+
+section .neonbox:hover span::before {
+    width: 100px;
+    height: 100px;
+    top: -70px;
+    left: 90px;
+    opacity: 1;
+}
+
+section .neonbox:hover span::after {
+    width: 100px;
+    height: 100px;
+    top: 370px;
+    left: 230px;
+    opacity: 1;
+}
+
+@keyframes animate {
+    0%,100% {
+        transform: translateY(10px);
+    }
+
+    50% {
+        transform: translateY(-10%);
+    }
+}
